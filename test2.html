@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肖揚 | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0C10;
+            --bg-card: #12151C;
+            --bg-card-hover: #171B24;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(94, 234, 212, 0.4);
+            --text: #E8EAED;
+            --text-dim: #8B92A5;
+            --text-faint: #565D6E;
+            --accent: #5EEAD4;
+            --accent-dim: rgba(94, 234, 212, 0.12);
+            --accent2: #FF8A5B;
+            --accent2-dim: rgba(255, 138, 91, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(94, 234, 212, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 85% 60%, rgba(255, 138, 91, 0.05) 0%, transparent 40%);
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ===== Header ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 12, 16, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 2.5rem;
+        }
+
+        .logo {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .logo::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.3px;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ===== Main / Pages ===== */
+        main {
+            padding-top: 90px;
+        }
+
+        .page {
+            display: none;
+            animation: fadeUp 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        /* ===== Hero / Bento Grid ===== */
+        .bento {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0 4rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.8rem;
+            position: relative;
+            transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-3px);
+        }
+
+        .card-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-tag .num {
+            background: var(--accent-dim);
+            color: var(--accent);
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        /* Hero main card */
+        .hero-card {
+            grid-column: span 8;
+            padding: 2.6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent2);
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-card h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #fff 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-card p.desc {
+            color: var(--text-dim);
+            font-size: 1.02rem;
+            max-width: 480px;
+            margin-bottom: 1.6rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 0.9rem;
+        }
+
+        .btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            padding: 0.75rem 1.4rem;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.25s ease;
+            border: 1px solid var(--border);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0A0C10;
+            font-weight: 700;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(94, 234, 212, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            color: var(--text);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Profile card */
+        .profile-card {
+            grid-column: span 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            padding: 3px;
+            position: relative;
+        }
+
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px dashed rgba(94, 234, 212, 0.35);
+            animation: spin 12s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #1a1e28;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .profile-card .name-jp {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .profile-card .name-en {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-faint);
+        }
+
+        .profile-meta {
+            width: 100%;
+            margin-top: 0.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            padding: 0.4rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .meta-row span:first-child {
+            color: var(--text-faint);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+        }
+
+        .meta-row span:last-child {
+            color: var(--text-dim);
+            text-align: right;
+        }
+
+        /* Skills card */
+        .skills-card {
+            grid-column: span 6;
+        }
+
+        .skills-card h3,
+        .strengths-card h3,
+        .learn-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .skill-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 8px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border: 1px solid rgba(94, 234, 212, 0.25);
+        }
+
+        .skill-tag.alt {
+            background: var(--accent2-dim);
+            color: var(--accent2);
+            border-color: rgba(255, 138, 91, 0.25);
+        }
+
+        /* Strengths card */
+        .strengths-card {
+            grid-column: span 6;
+        }
+
+        .strength-item {
+            display: flex;
+            gap: 0.9rem;
+            padding: 0.85rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .strength-item:first-of-type {
+            border-top: none;
+        }
+
+        .strength-num {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent2);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .strength-item h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.92rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .strength-item p {
+            font-size: 0.83rem;
+            color: var(--text-dim);
+        }
+
+        /* Learned / tags cloud card */
+        .learn-card {
+            grid-column: span 12;
+        }
+
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.9rem;
+        }
+
+        .learn-item {
+            background: var(--bg-card-hover);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            transition: border-color 0.25s ease;
+        }
+
+        .learn-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .learn-item .l-title {
+            font-family: 'Sora', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .learn-item .l-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-faint);
+        }
+
+        /* Section headers */
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-head h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+        }
+
+        .section-head .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-head .count {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-faint);
+            font-size: 0.85rem;
+        }
+
+        /* ===== Works ===== */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
+            margin-bottom: 5rem;
+        }
+
+        .work-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+
+        .work-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .work-thumb {
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .work-thumb.featured {
+            background: linear-gradient(135deg, #12222080, #0d1b1a);
+        }
+
+        .work-thumb.placeholder {
+            background: repeating-linear-gradient(135deg, #14171f, #14171f 10px, #171b24 10px, #171b24 20px);
+        }
+
+        .work-body {
+            padding: 1.4rem 1.5rem 1.6rem;
+        }
+
+        .work-body .w-cat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .work-body h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.2rem;
+            margin: 0.4rem 0 0.5rem;
+        }
+
+        .work-body p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* mini phone mockup for WeightGo */
+        .mini-phone {
+            width: 120px;
+            height: 170px;
+            background: #f2f2f7;
+            border-radius: 18px;
+            border: 4px solid #1c1c1e;
+            padding: 10px 8px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            transform: rotate(-4deg);
+        }
+
+        .mini-phone .mp-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            color: #007aff;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .mini-phone .mp-unit {
+            font-size: 0.55rem;
+            color: #1c1c1e;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mini-phone .mp-bar {
+            height: 5px;
+            background: #e5e5ea;
+            border-radius: 3px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .mini-phone .mp-fill {
+            width: 55%;
+            height: 100%;
+            background: #34c759;
+        }
+
+        .mini-phone .mp-label {
+            font-size: 0.5rem;
+            color: #8e8e93;
+            margin-top: 5px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .lock-icon {
+            color: var(--text-faint);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+        }
+
+        /* ===== Work Details Page ===== */
+        .work-details-wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2rem 2.5rem 6rem;
+        }
+
+        .back-link {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .wd-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .wd-header .w-cat {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .wd-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.2rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .wd-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .wd-meta-item {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+        }
+
+        .wd-meta-item span {
+            display: block;
+            color: var(--text-faint);
+            margin-bottom: 0.2rem;
+            font-size: 0.7rem;
+        }
+
+        .wd-body {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 2.2rem;
+        }
+
+        .wd-body p {
+            color: var(--text-dim);
+            font-size: 0.98rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wd-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .wd-image {
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            background: repeating-linear-gradient(135deg, #14171f, #14171f 10px, #171b24 10px, #171b24 20px);
+            border: 1px solid var(--border);
+        }
+
+        /* ===== Contact Page ===== */
+        .contact-wrap {
+            max-width: 560px;
+            margin: 3rem auto 6rem;
+            padding: 0 2.5rem;
+        }
+
+        .contact-wrap h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-wrap .sub {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-faint);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.9rem 1rem;
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.25s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-faint);
+        }
+
+        @media (max-width: 860px) {
+
+            .hero-card,
+            .profile-card,
+            .skills-card,
+            .strengths-card {
+                grid-column: span 12;
+            }
+
+            .learn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .wd-images {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem 1.4rem;
+            }
+
+            .wrap {
+                padding: 0 1.4rem;
+            }
+
+            .hero-card h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo" onclick="showPage('home')">肖揚<span class="mono"
+                    style="color:var(--text-faint); font-weight:400;">.dev</span></div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a
+                        onclick="showPage('home'); setTimeout(()=>document.getElementById('works').scrollIntoView({behavior:'smooth'}),50)">Works</a>
+                </li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HOME -->
+        <div id="home" class="page active">
+            <div class="wrap">
+
+                <div class="bento">
+                    <!-- Hero -->
+                    <div class="card hero-card">
+                        <div class="eyebrow">// システムエンジニア志望</div>
+                        <h1>ユーザー視点と技術力を<br>つなぎ、価値を生み出す</h1>
+                        <p class="desc">専門学校東京ビジネス・アカデミー IT ビジネス学科在籍。Web開発とIoT連携を軸に、実践的なものづくりを続けています。2027年3月 卒業見込み。</p>
+                        <div class="hero-btns">
+                            <a class="btn btn-primary"
+                                onclick="document.getElementById('works').scrollIntoView({behavior:'smooth'})">作品を見る
+                                →</a>
+                            <a class="btn btn-ghost" onclick="showPage('contact')">連絡する</a>
+                        </div>
+                    </div>
+
+                    <!-- Profile -->
+                    <div class="card profile-card">
+                        <div class="avatar">
+                            <div class="avatar-inner">肖</div>
+                        </div>
+                        <div>
+                            <div class="name-jp">肖揚 (シャオ ヤン)</div>
+                            <div class="name-en">XIAO YANG</div>
+                        </div>
+                        <div class="profile-meta">
+                            <div class="meta-row"><span>BIRTH</span><span>1999.09.05</span></div>
+                            <div class="meta-row"><span>専攻</span><span>プログラマー</span></div>
+                            <div class="meta-row"><span>資格</span><span>JLPT N2 / TOEIC 785</span></div>
+                            <div class="meta-row"><span>趣味</span><span>読書 / スケボー / スノーボード</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="card skills-card">
+                        <div class="card-tag"><span class="num">01</span>SKILLS</div>
+                        <h3>技術スタック</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">HTML / CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag alt">PHP</span>
+                            <span class="skill-tag alt">MySQL</span>
+                            <span class="skill-tag alt">Figma</span>
+                            <span class="skill-tag alt">IoT / センサー</span>
+                        </div>
+                    </div>
+
+                    <!-- Strengths -->
+                    <div class="card strengths-card">
+                        <div class="card-tag"><span class="num">02</span>STRENGTHS</div>
+                        <h3>私の強み</h3>
+                        <div class="strength-item">
+                            <span class="strength-num">01</span>
+                            <div>
+                                <h4>コミュニケーション力</h4>
+                                <p>意見が対立した際も丁寧に聞き、全員が納得する最適解を提案。</p>
+                            </div>
+                        </div>
+                        <div class="strength-item">
+                            <span class="strength-num">02</span>
+                            <div>
+                                <h4>学習意欲</h4>
+                                <p>未知の技術もAIを活用して自作アプリを完成。学び続ける姿勢。</p>
+                            </div>
+                        </div>
+                        <div class="strength-item">
+                            <span class="strength-num">03</span>
+                            <div>
+                                <h4>課題解決力</h4>
+                                <p>未経験のIoT開発で役割分担と情報収集を徹底し、完成まで導いた。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Learned -->
+                    <div class="card learn-card">
+                        <div class="card-tag"><span class="num">03</span>WHAT I LEARNED</div>
+                        <h3>学校で学んだこと</h3>
+                        <div class="learn-grid">
+                            <div class="learn-item"><span class="l-title">プログラミング</span><span class="l-sub">Java /
+                                    Python</span></div>
+                            <div class="learn-item"><span class="l-title">データベース</span><span class="l-sub">SQL</span>
+                            </div>
+                            <div class="learn-item"><span class="l-title">Web開発</span><span class="l-sub">HTML / CSS /
+                                    JS</span></div>
+                            <div class="learn-item"><span class="l-title">UI/UX設計</span><span class="l-sub">Figma</span>
+                            </div>
+                            <div class="learn-item"><span class="l-title">サーバーサイド</span><span class="l-sub">PHP</span>
+                            </div>
+                            <div class="learn-item"><span class="l-title">システム設計</span><span class="l-sub">要件定義 /
+                                    設計書</span></div>
+                            <div class="learn-item"><span class="l-title">IoT</span><span class="l-sub">センサー /
+                                    動作検証</span></div>
+                            <div class="learn-item"><span class="l-title">ビジネスマナー</span><span class="l-sub">文書作成 /
+                                    マナー</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WORKS -->
+                <div id="works">
+                    <div class="section-head">
+                        <h2>Works</h2>
+                        <div class="line"></div>
+                        <span class="count mono">04 projects</span>
+                    </div>
+                    <div class="works-grid">
+                        <div class="work-card" onclick="showWork(1)">
+                            <div class="work-thumb featured">
+                                <div class="mini-phone">
+                                    <div class="mp-num">18.2</div>
+                                    <div class="mp-unit">kg</div>
+                                    <div class="mp-bar">
+                                        <div class="mp-fill"></div>
+                                    </div>
+                                    <div class="mp-label">WEIGHTGO</div>
+                                </div>
+                            </div>
+                            <div class="work-body">
+                                <div class="w-cat">IoT × Web App</div>
+                                <h3>WeightGo</h3>
+                                <p>重量測定 IoT連携Webアプリ — センサーとリアルタイム連携した手荷物チェックツール</p>
+                            </div>
+                        </div>
+                        <div class="work-card" onclick="showWork(2)">
+                            <div class="work-thumb placeholder"><span class="lock-icon">coming soon</span></div>
+                            <div class="work-body">
+                                <div class="w-cat">Project 02</div>
+                                <h3>準備中</h3>
+                                <p>近日公開予定の作品です。</p>
+                            </div>
+                        </div>
+                        <div class="work-card" onclick="showWork(3)">
+                            <div class="work-thumb placeholder"><span class="lock-icon">coming soon</span></div>
+                            <div class="work-body">
+                                <div class="w-cat">Project 03</div>
+                                <h3>準備中</h3>
+                                <p>近日公開予定の作品です。</p>
+                            </div>
+                        </div>
+                        <div class="work-card" onclick="showWork(4)">
+                            <div class="work-thumb placeholder"><span class="lock-icon">coming soon</span></div>
+                            <div class="work-body">
+                                <div class="w-cat">Project 04</div>
+                                <h3>準備中</h3>
+                                <p>近日公開予定の作品です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- WORK DETAILS -->
+        <div id="work-details" class="page">
+            <div class="work-details-wrap">
+                <a class="back-link" onclick="showPage('home')">← Home に戻る</a>
+                <div id="work-content"></div>
+            </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div id="contact" class="page">
+            <div class="contact-wrap">
+                <h2>Contact</h2>
+                <p class="sub">ご連絡はこちらのフォーム、またはメールにてお願いいたします。</p>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group"><label>お名前</label><input type="text" required></div>
+                    <div class="form-group"><label>メールアドレス</label><input type="email" required></div>
+                    <div class="form-group"><label>メッセージ</label><textarea required></textarea></div>
+                    <button type="submit" class="btn btn-primary submit-btn">送信する →</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <span>© 2026 Xiao Yang</span>
+        <span>edward.y.shawn@gmail.com</span>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const works = {
+            1: {
+                cat: 'IoT × Web App',
+                title: 'WeightGo',
+                meta: [['期間', '2 ヶ月'], ['言語', 'HTML / JavaScript / Python'], ['担当', 'フロントエンド開発・IoT連携']],
+                desc: 'センサーとWebアプリのデータ連携・リアルタイム重量表示UIを実装した、手荷物重量測定アプリです。iOS風のインターフェースを採用し、航空会社ごとの制限重量に応じてリアルタイムで警告を表示します。Raspberry Piと連携し、実際のセンサーデータを取得して画面に反映する仕組みを構築しました。6名チームでの開発において、フロントエンドとIoT連携部分を担当。未経験の組み込み開発でしたが、役割分担と情報共有を徹底し、プロトタイプの完成まで導きました。',
+                images: 2
+            },
+            2: { cat: 'Project 02', title: '準備中', meta: [], desc: '現在準備中の作品です。近日公開予定。', images: 2 },
+            3: { cat: 'Project 03', title: '準備中', meta: [], desc: '現在準備中の作品です。近日公開予定。', images: 2 },
+            4: { cat: 'Project 04', title: '準備中', meta: [], desc: '現在準備中の作品です。近日公開予定。', images: 2 },
+        };
+
+        function showWork(id) {
+            const w = works[id];
+            let metaHTML = '';
+            if (w.meta.length) {
+                metaHTML = '<div class="wd-meta">' + w.meta.map(m => `<div class="wd-meta-item"><span>${m[0]}</span>${m[1]}</div>`).join('') + '</div>';
+            }
+            let imgHTML = '<div class="wd-images">';
+            for (let i = 0; i < w.images; i++) imgHTML += '<div class="wd-image"></div>';
+            imgHTML += '</div>';
+
+            document.getElementById('work-content').innerHTML = `
+            <div class="wd-header">
+                <div class="w-cat">${w.cat}</div>
+                <h2>${w.title}</h2>
+                ${metaHTML}
+            </div>
+            <div class="wd-body">
+                <p>${w.desc}</p>
+                ${imgHTML}
+            </div>
+        `;
+            showPage('work-details');
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('メッセージが送信されました！ありがとうございます。');
+            e.target.reset();
+        }
+    </script>
+
+</body>
+
+</html>
