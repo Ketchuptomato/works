@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ヒナタ洋菓子 | 創業昭和3年</title>
+  <meta name="description" content="昭和3年創業の洋菓子店、ヒナタ洋菓子。今も昔も変わらぬ製法で、美味しさと安心をお届けします。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Header（ロゴのみ） ===== -->
+  <header class="site-header">
+    <a class="logo" href="./" aria-label="ヒナタ洋菓子 トップ">
+      <svg class="logo-sun" viewBox="0 0 64 34" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M14 32 A18 18 0 0 1 50 32"/>
+          <line x1="32" y1="2" x2="32" y2="9"/>
+          <line x1="17" y1="7" x2="20.5" y2="13"/>
+          <line x1="47" y1="7" x2="43.5" y2="13"/>
+          <line x1="6" y1="17" x2="12" y2="20.5"/>
+          <line x1="58" y1="17" x2="52" y2="20.5"/>
+          <line x1="2" y1="32" x2="62" y2="32"/>
+        </g>
+      </svg>
+      <span class="logo-en">HINATA</span>
+      <span class="logo-ja">ヒナタ洋菓子<i>・</i>創業昭和3年</span>
+    </a>
+  </header>
+
+  <main>
+    <!-- ===== 第1画面：スライダー ===== -->
+    <section class="hero" aria-roledescription="carousel" aria-label="メインビジュアル">
+      <div class="hero-track" id="heroTrack">
+        <!-- スライドは script.js で前後に複製されます -->
+        <div class="slide slide-1" data-index="0">
+          <img src="https://images.unsplash.com/photo-1575831315238-dfe02ecedf26?auto=format&fit=crop&w=1800&q=80" alt="昔ながらの工房で働く菓子職人">
+          <p class="slide-copy light">今も昔も変わらぬ製法で<br>美味しさと安心をお届けします</p>
+        </div>
+        <div class="slide slide-2" data-index="1">
+          <img src="https://images.unsplash.com/photo-1449049607083-e29383d58423?auto=format&fit=crop&w=1000&q=80" alt="焼き菓子の詰め合わせ">
+          <p class="slide-copy dark">大切な方への贈り物に<br><span class="indent">ヒナタの焼き菓子</span></p>
+        </div>
+      </div>
+      <button class="hero-arrow prev" id="heroPrev" aria-label="前のスライド">&#x2039;</button>
+      <button class="hero-arrow next" id="heroNext" aria-label="次のスライド">&#x203A;</button>
+      <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <!-- ===== 第2画面：商品カテゴリー ===== -->
+    <section class="products">
+      <h2 class="section-title">ヒナタの商品</h2>
+      <ul class="category-list">
+        <li>
+          <button class="category bg-green" data-product="bread">
+            <img src="https://images.unsplash.com/photo-1763469866616-2d7d7198c46c?auto=format&fit=crop&w=600&h=600&q=80" alt="">
+            <span>パン</span>
+          </button>
+        </li>
+        <li>
+          <button class="category bg-yellow" data-product="baked">
+            <img src="https://images.unsplash.com/photo-1579618385552-046edd29f899?auto=format&fit=crop&w=600&h=600&q=80" alt="">
+            <span>焼き菓子</span>
+          </button>
+        </li>
+        <li>
+          <button class="category bg-pink" data-product="cake">
+            <img src="https://images.unsplash.com/photo-1790328603645-b3976e484017?auto=format&fit=crop&w=600&h=600&q=80" alt="">
+            <span>ケーキ</span>
+          </button>
+        </li>
+        <li>
+          <button class="category bg-blue" data-product="gift">
+            <img src="https://images.unsplash.com/photo-1692071097904-b549fdc4029a?auto=format&fit=crop&w=600&h=600&q=80" alt="">
+            <span>ギフト</span>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== 第3画面：お知らせ ===== -->
+    <section class="news-wrap">
+      <div class="news">
+        <h2 class="section-title">お知らせ</h2>
+        <div class="news-body">
+          <ul class="news-list">
+            <li><time datetime="2026-07-27">2026年07月27日</time><span class="news-title">2026年夏の献血キャンペーンのお知らせ <b>&raquo;</b></span></li>
+            <li><time datetime="2026-01-08">2026年01月08日</time><span class="news-title">ガシャポン　ミニチュアチャームについて <b>&raquo;</b></span></li>
+            <li><time datetime="2025-12-10">2025年12月10日</time><span class="news-title">年末年始営業時間のご案内 <b>&raquo;</b></span></li>
+            <li><time datetime="2025-12-07">2025年12月07日</time><span class="news-title">ヒナタ　求人情報 <b>&raquo;</b></span></li>
+          </ul>
+          <p class="news-more">
+            <svg viewBox="0 0 16 18" aria-hidden="true"><path fill="currentColor" d="M5 0h6v2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h3zM4 7v1.5h8V7zm0 3.5V12h8v-1.5zm0 3.5v1.5h5V14z"/></svg>
+            一覧を表示
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 第4画面：ご紹介 ===== -->
+    <section class="about">
+      <h2 class="section-title">美味しさと安心をお届けします</h2>
+      <div class="about-body">
+        <div class="about-text">
+          <p>ヒナタの商品は全て、創業以来の変わらぬ製法と厳選した素材を使い、<br>職人が一つ一つ丁寧に焼き上げています。<br>私達は美味しさと安心をお届けするための手間は惜しみません。<br>昭和3年創業の味をぜひご賞味下さい。</p>
+          <p>レトロなパッケージが人気の焼き菓子や、ノスタルジックな雰囲気の<br>本格洋食レストラン・喫茶もぜひご利用下さい。<br>都内5店舗、皆さまのご来店を心よりお待ちしております。</p>
+        </div>
+        <figure class="about-img">
+          <img src="https://images.unsplash.com/photo-1759503263076-d13a96afee62?auto=format&fit=crop&w=900&q=80" alt="焼きたてのパンと洋菓子">
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <p class="footer-logo">HINATA</p>
+    <p class="footer-sub">ヒナタ洋菓子　創業昭和3年</p>
+    <p class="copyright">&copy; 2026 ヒナタ洋菓子</p>
+    <p class="credit">Photos: <a href="https://unsplash.com/" target="_blank" rel="noopener">Unsplash</a></p>
+  </footer>
+
+  <!-- ===== 商品ポップアップ ===== -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <button class="modal-close" data-close aria-label="閉じる">&times;</button>
+      <img class="modal-img" id="modalImg" src="" alt="">
+      <div class="modal-text">
+        <p class="modal-cat" id="modalCat"></p>
+        <h3 class="modal-name" id="modalName"></h3>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
